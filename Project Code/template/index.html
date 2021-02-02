@@ -1,0 +1,60 @@
+@author: Abhinav
+
+<!DOCTYPE html>
+<html>
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+
+<head>  
+    <meta charset="UTF-8">
+    <title>Renewable Energy Prediction</title>
+    <style>
+      body {  background-color:#dddddd }
+    </style>
+</head>
+<body>
+  <div class="solar">
+	<h1>Solar Energy Generation</h1>
+	
+    
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict_solar')}}"method="post">
+    	<input type="text" name="SWTDN" placeholder="SWTDN(0-1160)" required="required" />
+        <input type="text" name="SWGDN" placeholder="SWGDN(0-885)" required="required" />
+		<input type="text" name="T" placeholder="T(264-301)" required="required" />
+		
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+    
+   <br>
+   <br>
+   {{ prediction_solar }}
+
+   </div>
+   
+<div class="wind">
+	<h1>Wind Energy Generation</h1>
+	
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict_wind')}}"method="post">
+    	<input type="text" name="v1" placeholder="V1(0.75-7.92)" required="required" />
+        <input type="text" name="v2" placeholder="V2(1.34-11.16)" required="required" />
+		<input type="text" name="v_50m" placeholder="V_50m(1.95-14.92)" required="required" />
+		<input type="text" name="z0" placeholder="Z0(0.23-0.14)" required="required" />
+		
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+    
+   <br>
+   <br>
+   {{ prediction_wind }}
+
+ </div>
+
+
+
+</body>
+</html>
+
+
+
